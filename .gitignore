@@ -1,0 +1,23 @@
+# Python
+*.pyc
+__pycache__/
+*.egg-info/
+venv/
+.venv-docker/
+
+# Database
+site.db
+
+# Docker
+uploads/
+
+# OS Specific
+.DS_Store
+
+# IDE Specific
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
