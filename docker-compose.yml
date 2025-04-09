@@ -1,9 +1,27 @@
+version: "3.8"
+
 services:
   web:
     build: .
     ports:
       - "5000:5000"
     volumes:
-      - ./uploads:/app/uploads
+      - ./:/app
     environment:
-      - SQLALCHEMY_DATABASE_URI=sqlite:///site.db
+      - SQLALCHEMY_DATABASE_URI=postgresql://postgres:postgres@db:5432/mydatabase
+    depends_on:
+      - db
+
+  db:
+    image: postgres:16
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: mydatabase
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
+
